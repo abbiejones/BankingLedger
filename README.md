@@ -2,12 +2,15 @@
 
 This app aims to 
 
-##Installation
+## Installation
 
 ```
 git clone git@github.com:abbiejones/BankingLedger.git
 ```
 
-##Running Console App
-
-##Running Web App
+## Running Console App
+```
+cd BankingLedger/backend/
+dotnet run
+```
+## Running Web App
