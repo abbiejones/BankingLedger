@@ -1,6 +1,6 @@
 # BankingLedger
 
-This app simulates a banking ledger. Through both a web app and a console app, the following actions are supported:
+This app simulates a banking ledger. Through both web and console applications, the following actions are supported:
 
 - Create a new account
 - Login
@@ -34,3 +34,5 @@ In a new terminal:
 cd BankingLedger/frontend/
 ng serve
 ```
+
+Navigate to `https://localhost:4200`
