@@ -14,3 +14,13 @@ cd BankingLedger/backend/
 dotnet run
 ```
 ## Running Web App
+
+```
+cd BankingLedger/backend/
+dotnet run
+```
+In a new terminal:
+```
+cd BankingLedger/frontend/
+ng serve
+```
