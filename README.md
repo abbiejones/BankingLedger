@@ -10,7 +10,7 @@ This app simulates a banking ledger. Through both web and console applications, 
 - See transaction history
 - Logout
 
-**Angular 6** front end (only in web app) / **.Net Core** backend / **Sqlite** database
+**Angular 6** frontend (only in web app) / **.Net Core** backend / **Sqlite** database
 
 ## Installation
 
