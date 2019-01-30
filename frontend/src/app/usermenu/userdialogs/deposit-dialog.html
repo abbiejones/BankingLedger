@@ -1,0 +1,15 @@
+<div class="container">
+        <div mat-dialog-content>
+            <div class="input-group mb-3">
+                <input matInput type="text" class="form-control" readonly [(ngModel)]="data.accountNumber" placeholder="Enter the account number" aria-label="accountNumber">
+            </div>
+            <div class="input-group mb-3">
+                <input matInputtype="text" class="form-control" [(ngModel)]="data.amount" placeholder="Enter the deposit amount" aria-label="depositAmount">
+            </div>
+        </div>
+    
+        <div mat-dialog-actions align="center">
+            <button mat-button  class="btn btn-dark" (click)="onNoClick()">Exit</button>
+            <button mat-button class="btn btn-dark" [mat-dialog-close]="data.amount" (click)="onNoClick()" cdkFocusInitial>Submit</button>
+        </div>
+</div>

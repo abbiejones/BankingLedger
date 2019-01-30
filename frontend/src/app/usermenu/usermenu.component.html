@@ -3,12 +3,23 @@
     <div class="col-sm">
     </div>
     <div class="col-sm">
-        <button class="btn btn-lg btn-dark btn-block" type="submit">Check balance</button>
-        <button class="btn btn-lg btn-dark btn-block" type="submit">Deposit money</button>
-        <button class="btn btn-lg btn-dark btn-block" type="submit">Withdraw money</button>
-        <button class="btn btn-lg btn-dark btn-block" type="submit">View transaction history</button>
+        <button class="btn btn-lg btn-dark btn-block" type="submit" (click)="checkBalance()">Check balance</button>
+        <button class="btn btn-lg btn-dark btn-block" type="submit" (click)="openDeposit()">Deposit money</button>
+        <button class="btn btn-lg btn-dark btn-block" type="submit" (click)="openWithdraw()">Withdraw money</button>
+        <button class="btn btn-lg btn-dark btn-block" type="submit"(click)="viewTransactionHistory()">View transaction history</button>
     </div>
     <div class="col-sm">
     </div>
   </div>
+</div>
+<div *ngIf="balance && accountNumber">
+  <div class="row">
+    <div class="col-sm">
+      </div>
+  <div class="alert alert-dark" role="alert">
+      Account  <b>#{{accountNumber}}</b>  balance: <b>${{balance}}</b>
+    </div>
+    <div class="col-sm">
+      </div>
+    </div>
 </div>

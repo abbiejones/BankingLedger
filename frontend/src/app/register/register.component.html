@@ -3,24 +3,29 @@
       <div class="col-sm">
       </div>
       <div class="col-sm">
-          <form class="form-signin">
-              <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+            <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
               <h1 class="h3 mb-3 font-weight-normal">Please register</h1>
-              <label for="inputFirstName" class="sr-only">First Name</label>
-              <input type="text" id="inputFirstName" class="form-control" placeholder="First Name" required>
-              <label for="inputLastNAme" class="sr-only">Last Name</label>
-              <input type="text" id="inputLastName" class="form-control" placeholder="Last Name" required>
+                <input type="text" class="form-control" id="firstName"
+                        placeholder="First Name"
+                        required
+                       [(ngModel)]="firstName" name="firstName">
+                <input type="text" class="form-control" id="lastName"
+                        placeholder="Last Name"
+                        required
+                       [(ngModel)]="lastName" name="lastName">
+                <input class="form-control" id="userName"
+                        required
+                        placeholder="Username"
+                        [(ngModel)]="userName" name="userName">
+                <input type="password" class="form-control" id="password"
+                        required
+                        placeholder="Password"
+                        [(ngModel)]="password" name="password">
               <br>
-              <label for="inputUsername" class="sr-only">Username</label>
-              <input type="text" id="inputUserName" class="form-control" placeholder="Username" required autofocus>
-              <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
               <br>
-              <br>
-              <button class="btn btn-lg btn-dark btn-block" type="submit">Register</button>
-          </form>
-      </div>
+              <button type="submit" class="btn btn-lg btn-dark btn-block" [disabled]="!registerForm.form.valid" (click)="register()">Submit</button>
+            </form>
+          </div>
       <div class="col-sm">
       </div>
     </div>
-  </div>

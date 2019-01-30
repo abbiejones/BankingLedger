@@ -4,6 +4,9 @@ using BankingLedger.Biz;
 using BankingLedger.Manager;
 using Microsoft.Extensions.DependencyInjection;
 using BankingLedger.Log;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore;
+
 
 /// <summary>
 /// app entry point
@@ -12,6 +15,10 @@ namespace BankingLedger
 {
     class Program
     {
+        public enum appType {CONSOLE, WEB}
+
+        static appType app = appType.WEB;
+
         /// <summary>
         /// generates service provider to allow for dependency injection into banking ledger application
         /// </summary>
@@ -32,16 +39,26 @@ namespace BankingLedger
             return serviceProvider;
         }
 
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
+
         /// <summary>
         /// entry point
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            var serviceProvider = configureServices();
+            if (app == appType.WEB){
+                CreateWebHostBuilder(args).Build().Run();
+            }
 
-            var bank = new BankingInterface(serviceProvider.GetService<IUserBiz>(), serviceProvider.GetService<IBankAccountBiz>());
-            bank.application();
+            else if (app == appType.CONSOLE){
+                var serviceProvider = configureServices();
+
+                var bank = new BankingInterface(serviceProvider.GetService<IUserBiz>(), serviceProvider.GetService<IBankAccountBiz>());
+                bank.application();
+            }
 
         }
     }

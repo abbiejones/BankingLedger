@@ -3,16 +3,27 @@
       <div class="col-sm">
       </div>
       <div class="col-sm">
-          <form class="form-signin">
-              <img class="mb-4" src="../../assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-              <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+            <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+              <!-- <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
               <label for="inputUsername" class="sr-only">Username</label>
               <input type="userName" id="inputUserName" class="form-control" placeholder="Username" required autofocus>
               <label for="inputPassword" class="sr-only">Password</label>
               <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
               <br>
               <br>
-              <button class="btn btn-lg btn-dark btn-block" type="submit" (click)="login()" >Sign in</button>
+              <button class="btn btn-lg btn-dark btn-block" type="submit" (click)="login()" >Sign in</button> -->
+              <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+              <input class="form-control" id="userName"
+              required
+              placeholder="Username"
+              [(ngModel)]="userName" name="userName">
+      <input type="password" class="form-control" id="password"
+              required
+              placeholder="Password"
+              [(ngModel)]="password" name="password">
+    <br>
+    <br>
+    <button type="submit" class="btn btn-lg btn-dark btn-block" [disabled]="!loginForm.form.valid">Submit</button>
           </form>
       </div>
       <div class="col-sm">
