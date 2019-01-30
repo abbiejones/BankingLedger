@@ -51,7 +51,7 @@ cd BankingLedger/frontend/
 ng serve
 ```
 
-Navigate to `https://localhost:4200` in your browser.
+Navigate to `http://localhost:4200` in your browser.
 
 ## Notes
 
