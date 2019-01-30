@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { BalanceDialog, DepositDialog, WithdrawDialog, TransactionDialog} from './userdialogs/userdialogs.component'
 import { AuthService } from '../auth/auth.service';
 
+//interfaces for http data binding sync up
 export interface BankAccount{
   accountNumber: number,
   balance: number,
@@ -15,6 +16,7 @@ export interface Transactions{
   transactions: string
 }
 
+//withdrawal, deposit, transaction history, check balance capabilities
 @Component({
   selector: 'app-usermenu',
   templateUrl: './usermenu.component.html',
@@ -58,7 +60,7 @@ export class UserMenuComponent implements OnInit {
   openBalance(): void{
     this.error = false;
     this.checkAccount();
-    const dialogRef = this.dialog.open(BalanceDialog, {
+    const dialogRef = this.dialog.open(BalanceDialog, { //open balance dialog
       width: '350px',
       height: '200px',
       data: {accountNumber: this.accountNumber, balance: this.balance, amount: this.amount}
@@ -90,7 +92,7 @@ export class UserMenuComponent implements OnInit {
       this.accountNumber = res.item1;
       this.balance = res.item2;
 
-      const dialogRef = this.dialog.open(WithdrawDialog, {
+      const dialogRef = this.dialog.open(WithdrawDialog, { //open withdrawal dialog
         width: '400px',
         height: '200px',
         data: {accountNumber: this.accountNumber, balance: this.balance, amount: this.amount}
@@ -99,7 +101,7 @@ export class UserMenuComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this.amount = result;
-        if (this.amount <= this.balance && this.amount > 0){
+        if (this.amount <= this.balance && this.amount > 0){ //error checking
           this.withdraw();
         } else if (this.amount != 0 && this.amount != null){
           this.error = true;
@@ -129,7 +131,7 @@ export class UserMenuComponent implements OnInit {
       this.accountNumber = res.item1;
       this.balance = res.item2;
 
-      const dialogRef = this.dialog.open(DepositDialog, {
+      const dialogRef = this.dialog.open(DepositDialog, { //open deposit dialog
         width: '400px',
         height: '200px',
         data: {accountNumber: this.accountNumber, balance: this.balance, amount: this.amount}
@@ -138,7 +140,7 @@ export class UserMenuComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this.amount = result;
-        if (this.amount <= 10000 && this.amount > 0){
+        if (this.amount <= 10000 && this.amount > 0){ //error checking
           this.deposit();
         } else if (this.amount != 0 && this.amount != null){
           this.error = true;
@@ -162,7 +164,7 @@ export class UserMenuComponent implements OnInit {
   openTransaction(){
     this.error = false;
     this.checkAccount();
-    const dialogRef = this.dialog.open(TransactionDialog, {
+    const dialogRef = this.dialog.open(TransactionDialog, { //open transaction dialog
       width: '500px',
       height: '700px',
       data: this.transactions

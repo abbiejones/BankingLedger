@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { Router } from '@angular/router';
 
+//login menu
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

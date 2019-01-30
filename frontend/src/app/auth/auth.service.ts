@@ -7,6 +7,7 @@ import { stringify } from '@angular/core/src/render3/util';
 import { map, catchError } from 'rxjs/operators';
 import { Subject }    from 'rxjs';
 
+//authorization service
 @Injectable({
   providedIn: 'root'
 })

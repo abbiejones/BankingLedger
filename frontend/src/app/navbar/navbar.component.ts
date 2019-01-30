@@ -3,6 +3,7 @@ import { RouterModule, Routes, RouterStateSnapshot } from '@angular/router';
 import { AuthService }            from '../auth/auth.service';
 import { User }              from '../../assets/User';
 
+//top navigation
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',

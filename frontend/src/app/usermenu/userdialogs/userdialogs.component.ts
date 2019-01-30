@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { BankAccount } from '../usermenu.component'
 import { Transactions } from '../usermenu.component'
 
+//all dialog components (balance, withdrawal, deposit, transaction history)
 @Component({
   selector: 'balance-dialog',
   templateUrl: 'balance-dialog.html',

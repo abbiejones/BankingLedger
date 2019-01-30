@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { stringify } from '@angular/core/src/render3/util';
 import { map, catchError } from 'rxjs/operators';
 
-
+//http services to web api for banking
 @Injectable({
   providedIn: 'root'
 })
