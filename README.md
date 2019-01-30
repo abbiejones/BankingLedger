@@ -23,6 +23,8 @@ git clone git@github.com:abbiejones/BankingLedger.git
 cd BankingLedger/backend/
 ```
 Open `BankingLedger/backend/Program.cs` and confirm that `app` is set to `appType.CONSOLE`
+
+
 Return to your terminal and execute:
 
 ```
@@ -34,7 +36,9 @@ dotnet run
 ```
 cd BankingLedger/backend/
 ```
-Open `BankingLedger/backend/Program.cs` and confirm that `app` is set to `appType.WEB`
+Open `BankingLedger/backend/Program.cs` and confirm that `app` is set to `appType.WEB`.
+
+
 Return to your terminal and execute:
 
 ```
@@ -54,8 +58,8 @@ Navigate to `https://localhost:4200` in your browser.
 As it stands, there is only one user in the database with the following credentials:
 
 
-username: ab
-password: ab
+- username: ab
+- password: ab
 
 
 Feel free to use this user and/or make your own (or as many users as you'd like).
