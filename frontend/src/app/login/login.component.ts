@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
   userName: string;
   password: string;
   submitted: boolean;
+  userId: number;
+  error: boolean;
 
   ngOnInit() {
   }
@@ -32,17 +34,23 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.message = 'Trying to log in ...';
- 
+    this.error = false;
     this.authService.login(this.userName, this.password).subscribe(() => {
       //this.setMessage();
       if (this.authService.isLoggedIn) {
         // Get the redirect URL from our auth service
         // If no redirect has been set, use the default
+        this.userId = this.authService.userId;
         let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/usermenu';
+
+
         // Redirect the user
         this.router.navigate([redirect]);
+        this.authService.getId(this.userId);
       } else {
-        //either password is incorrect or user does not exist
+        this.error = true;
+        this.userName = "";
+        this.password = "";
       }
     });
   }

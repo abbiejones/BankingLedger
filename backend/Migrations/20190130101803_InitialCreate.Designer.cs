@@ -4,11 +4,12 @@ using BankingLedger.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BankingLedger.Migrations
 {
     [DbContext(typeof(BankingContext))]
-    [Migration("20190128233820_InitialCreate")]
+    [Migration("20190130101803_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

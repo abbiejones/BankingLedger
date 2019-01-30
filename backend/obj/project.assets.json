@@ -12209,6 +12209,7 @@
       "Microsoft.AspNetCore.Http.Abstractions >= 2.2.0",
       "Microsoft.AspNetCore.HttpsPolicy >= 2.2.0",
       "Microsoft.AspNetCore.Mvc >= 2.2.0",
+      "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.Data.SQLite >= 2.2.1",
       "Microsoft.EntityFrameworkCore >= 2.2.1",
       "Microsoft.EntityFrameworkCore.Design >= 2.2.1",
@@ -12287,6 +12288,11 @@
             "version": "[2.2.0, )"
           },
           "Microsoft.AspNetCore.Mvc": {
+            "target": "Package",
+            "version": "[2.2.0, )"
+          },
+          "Microsoft.AspNetCore.Razor.Design": {
+            "suppressParent": "All",
             "target": "Package",
             "version": "[2.2.0, )"
           },

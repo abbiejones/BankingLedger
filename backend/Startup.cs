@@ -1,17 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+//using System;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+//using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Cors;
+//using Microsoft.Extensions.Options;
+//using Microsoft.AspNetCore.Cors;
 using BankingLedger.DataAccess;
-using BankingLedger.Models;
 using BankingLedger.Biz;
 using BankingLedger.Log;
 using Microsoft.EntityFrameworkCore;
@@ -29,19 +28,23 @@ namespace BankingLedger
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-{            services.AddEntityFrameworkSqlite();
-            services.AddSingleton<IBankAccountRepository, BankAccountRepository>();
-            services.AddSingleton<ITransactionRepository, TransactionRepository>();
-            services.AddSingleton<IUserRepository, UserRepository>();
-            services.AddSingleton<IUserBiz, UserBiz>();
-            services.AddSingleton<IBankAccountBiz, BankAccountBiz>();
-            services.AddSingleton<ILogger,Logger>();
-            services.AddOptions();
-            services.AddDbContext<BankingContext>(options => options.UseSqlite("DataSource=bank.db"));
-            services.BuildServiceProvider();
+        public void ConfigureServices(IServiceCollection services){
+            
+            services.AddEntityFrameworkSqlite();
+            services.AddDbContext<BankingContext>(options => 
+                    options.UseSqlite("DataSource=bank.db"));
+            
             services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddScoped<IBankAccountRepository, BankAccountRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserBiz, UserBiz>();
+            services.AddScoped<IBankAccountBiz, BankAccountBiz>();
+            services.AddScoped<ILogger,Logger>();
+            services.AddOptions();
+            //services.BuildServiceProvider();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

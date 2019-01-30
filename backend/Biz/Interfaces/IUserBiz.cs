@@ -6,6 +6,7 @@ namespace BankingLedger.Biz
 
          int createUser(string userName, string password, string firstName, string lastName);
 
+        void setUser(int userId);
          void clearUser();
 
     }

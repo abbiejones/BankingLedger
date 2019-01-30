@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   lastName: string = "";
   userName: string = "";
   password: string = "";
+  error: boolean;
 
   ngOnInit(){
 
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.message = 'Trying to log in ...';
- 
+    this.error = false;
     this.authService.register(this.firstName, this.lastName, this.userName, this.password).subscribe(() => {
       //this.setMessage();
       if (this.authService.isLoggedIn) {
@@ -45,6 +46,12 @@ export class RegisterComponent implements OnInit {
  
         // Redirect the user
         this.router.navigate([redirect]);
+      } else {
+        this.error = true;
+        this.firstName = "";
+        this.lastName = "";
+        this.userName = "";
+        this.password = "";
       }
     });
   }

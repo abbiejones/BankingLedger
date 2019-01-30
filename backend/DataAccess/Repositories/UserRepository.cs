@@ -1,6 +1,7 @@
 using BankingLedger.Models;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
 /// <summary>
 /// all database access functions related to user
 /// </summary>

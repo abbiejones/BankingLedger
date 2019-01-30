@@ -2,6 +2,8 @@ using BankingLedger.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
+
 /// <summary>
 /// all database access actions related to transactions
 /// </summary>
@@ -10,9 +12,11 @@ namespace BankingLedger.DataAccess
     public class TransactionRepository : ITransactionRepository
     {
         private readonly BankingContext _context;
-        public TransactionRepository(BankingContext context, bool test=false){
+        
+        public TransactionRepository(BankingContext context){
             _context = context;
         }
+
         public List<Transaction> getTransactionHistory(int userId) { 
             try{
             IEnumerable<Transaction> transactionHistory = from trans in _context.Transactions

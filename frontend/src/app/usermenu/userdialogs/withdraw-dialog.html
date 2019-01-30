@@ -7,13 +7,13 @@
         </div>
         <div class="input-group mb-3">
             <!-- <mat-form-field> -->
-            <input matInput type="text" class="form-control" [(ngModel)]="data.amount" placeholder="Enter the withdrawal amount">
+            <input matInput type="text" class="form-control" [(ngModel)]="data.amount" placeholder="Withdrawal amount (no overdraft)">
         <!-- </mat-form-field> -->
         </div>
     </div>
 
     <div mat-dialog-actions align="center">
         <button mat-button  class="btn btn-dark" (click)="onNoClick()">Exit</button>
-        <button mat-button class="btn btn-dark" [mat-dialog-close]="data.amount" (click)="onNoClick()" cdkFocusInitial>Submit</button>
+        <button mat-button class="btn btn-dark" [mat-dialog-close]="data.amount" cdkFocusInitial>Submit</button>
     </div>
 </div>

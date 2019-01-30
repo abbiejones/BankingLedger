@@ -1,10 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
 using BankingLedger.Biz;
+using System.Collections.Generic;
 
 namespace BankingLedgerApi.Controllers
 {   
@@ -14,18 +11,23 @@ namespace BankingLedgerApi.Controllers
     public class BankAccountController : ControllerBase
     {
         public class AccountInfo{
+
+            public int userId;
             public int accountNumber;
             public decimal amount;
         }
 
         IBankAccountBiz _bankAccountBiz;
-        public BankAccountController(IBankAccountBiz bankAccountBiz){
+        IUserBiz _userBiz;
+        public BankAccountController(IBankAccountBiz bankAccountBiz, IUserBiz userBiz){
             _bankAccountBiz = bankAccountBiz;
+            _userBiz = userBiz;
         }
 
         [HttpPost("deposit")]
         public ActionResult<Tuple<int, decimal>> Deposit([FromBody] AccountInfo depositInfo)
         {   
+            _userBiz.setUser(depositInfo.userId);
             return _bankAccountBiz.deposit(depositInfo.amount, depositInfo.accountNumber);
         }
 
@@ -33,21 +35,22 @@ namespace BankingLedgerApi.Controllers
         [HttpPost("withdraw")] 
         public ActionResult<Tuple<int, decimal>> Withdraw([FromBody] AccountInfo withdrawInfo)
         {
+            _userBiz.setUser(withdrawInfo.userId);
             return _bankAccountBiz.withdraw(withdrawInfo.amount, withdrawInfo.accountNumber);
         }
 
         //TODO: set up web transactions
-        [HttpGet("transaction")]
-        public ActionResult<string> Transaction()
+        [HttpGet("transaction/{userId}")]
+        public ActionResult<List<List<string>>> Transaction(int userId)
         {
-            //get all transactions
-            return "1";
+            _userBiz.setUser(userId);
+            return _bankAccountBiz.getTransactionHistory();
         }
 
-        [HttpGet("balance/{userCheck}")]
-        public ActionResult<Tuple<int, decimal>> Balance(bool userCheck)
-        {
-            return _bankAccountBiz.checkBalance();
+        [HttpGet("balance/{userCheck}/{userId}")]
+        public ActionResult<Tuple<int, decimal>> Balance(bool userCheck, int userId)
+        {   _userBiz.setUser(userId);
+            return _bankAccountBiz.checkBalance(userCheck);
         }
         
     }

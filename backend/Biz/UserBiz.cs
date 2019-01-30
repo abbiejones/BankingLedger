@@ -70,13 +70,22 @@ namespace BankingLedger.Biz
         /// set current user in bank account business logic context as well
         /// </summary>
         /// <param name="currentUser"></param>
-        private void setUser(User currentUser){
-            _currentUser = new User{
+        public void setUser(User currentUser){
+            this._currentUser = new User{
                 userId = currentUser.userId,
                 firstName = currentUser.firstName,
                 lastName = currentUser.lastName
             };
             _bankAccountBiz.setUser(currentUser);
+        }
+
+        public void setUser(int userId){
+            this._currentUser = new User{
+                userId = userId,
+                firstName = "",
+                lastName = ""
+            };
+            _bankAccountBiz.setUser(this._currentUser);
         }
 
         /// <summary>

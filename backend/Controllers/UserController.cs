@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
+﻿using Microsoft.AspNetCore.Mvc;
 using BankingLedger.Biz;
 
 namespace BankingLedgerApi.Controllers
@@ -20,6 +15,8 @@ namespace BankingLedgerApi.Controllers
             public string password;
 
         }
+
+        
         IUserBiz _userBiz;
         public UserController(IUserBiz userBiz){
             _userBiz = userBiz;
@@ -28,8 +25,7 @@ namespace BankingLedgerApi.Controllers
         [HttpPost("login")]
         public ActionResult<int> Login(UserBasics logInUser)
         {   
-            return _userBiz.userExists(logInUser.userName, logInUser.password);
-            
+            return _userBiz.userExists(logInUser.userName, logInUser.password);            
         }
 
         // // POST api/user/register

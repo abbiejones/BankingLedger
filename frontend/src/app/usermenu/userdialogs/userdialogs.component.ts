@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { BankAccount } from '../usermenu.component'
+import { Transactions } from '../usermenu.component'
 
 @Component({
   selector: 'balance-dialog',
@@ -58,7 +59,7 @@ export class TransactionDialog {
 
   constructor(
     public dialogRef: MatDialogRef<TransactionDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: BankAccount) {}
+    @Inject(MAT_DIALOG_DATA) public data: string) {}
 
   onNoClick(): void {
     this.dialogRef.close();

@@ -5,6 +5,7 @@ import { tap, delay } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 import { stringify } from '@angular/core/src/render3/util';
 import { map, catchError } from 'rxjs/operators';
+import { Subject }    from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,8 @@ import { map, catchError } from 'rxjs/operators';
 export class AuthService {
 
   httpOptions: any;
+  getId$: Observable<number>;
+  private getIdSubject = new Subject<number>();
 
   constructor(private http: HttpClient) {
     this.httpOptions = {
@@ -23,7 +26,7 @@ export class AuthService {
    }
 
   isLoggedIn = false;
-
+  userId : number;
   // store the URL so we can redirect after logging in
   redirectUrl: string;
 
@@ -35,8 +38,13 @@ export class AuthService {
       )
   }
 
+  getId(data){
+    this.getIdSubject.next(data);
+  }
+
   checkUser(response: any){
-      if (+response >= 1){
+     this.userId = +response;
+      if (this.userId >= 1){
         this.isLoggedIn = true;
       }
   }

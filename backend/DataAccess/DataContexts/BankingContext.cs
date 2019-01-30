@@ -1,5 +1,6 @@
 using BankingLedger.Models;
 using Microsoft.EntityFrameworkCore;
+
 /// <summary>
 /// Entity Framework Database context for all banking actions
 /// </summary>
@@ -34,7 +35,7 @@ namespace BankingLedger.DataAccess
         
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) => optionsBuilder.UseSqlite("Data Source=bank.db");
         
-        public BankingContext(DbContextOptions<BankingContext> options) :base(options){ }
+        public BankingContext(DbContextOptions<BankingContext> options) :base(options){}
 
         public BankingContext(){}
         public virtual DbSet<User> Users { get; set; }

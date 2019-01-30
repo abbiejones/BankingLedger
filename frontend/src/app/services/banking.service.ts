@@ -23,22 +23,22 @@ export class BankingService {
     };
    }
 
-  deposit(accountNumber: number, amount: number): Observable<any> {
-    var accountInfo = {accountNumber: accountNumber, amount: amount};
+  deposit(userId: number, accountNumber: number, amount: number): Observable<any> {
+    var accountInfo = {userId: userId, accountNumber: accountNumber, amount: amount};
     return this.http.post("http://localhost:5000/api/bankaccount/deposit/", accountInfo, this.httpOptions);
   }
 
-  withdraw(accountNumber: number, amount: number): Observable<any> {
-    var accountInfo = {accountNumber: accountNumber, amount: amount};
+  withdraw(userId: number, accountNumber: number, amount: number): Observable<any> {
+    var accountInfo = {userId: userId, accountNumber: accountNumber, amount: amount};
     return this.http.post("http://localhost:5000/api/bankaccount/withdraw/", accountInfo, this.httpOptions);
   }
 
-   checkBalance(): Observable<any> {
-    return this.http.get("http://localhost:5000/api/bankaccount/balance/", this.httpOptions);
+   checkBalance(userCheck: boolean, userId: number): Observable<any> {
+    return this.http.get("http://localhost:5000/api/bankaccount/balance/" + userCheck + "/" + userId, this.httpOptions);
   }
 
-  transactionHistory(): Observable<any> {
-    return this.http.get("http://localhost:5000/api/bankaccount/transaction/", this.httpOptions);
+  transactionHistory(userId: number): Observable<any> {
+    return this.http.get("http://localhost:5000/api/bankaccount/transaction/" + userId, this.httpOptions);
   }
 
 

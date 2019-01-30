@@ -1,6 +1,7 @@
 using BankingLedger.Models;
 using System.Linq;
 using System;
+using Microsoft.EntityFrameworkCore;
 /// <summary>
 /// all database access functions related to bank account actions
 /// </summary>
@@ -9,7 +10,7 @@ namespace BankingLedger.DataAccess
     public class BankAccountRepository : IBankAccountRepository
     {
         private readonly BankingContext _context;
-        public BankAccountRepository(BankingContext context, bool test=false){
+        public BankAccountRepository(BankingContext context){
         
             _context = context;
         

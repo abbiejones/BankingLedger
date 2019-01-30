@@ -18,7 +18,10 @@ export class NavbarComponent implements OnInit {
   }
 
   checkLogin(): boolean {
-    if (this.authService.isLoggedIn) { return true; }
+    if (this.authService.isLoggedIn) { 
+      this.currentUser.userId = this.authService.userId;
+      this.authService.getId(this.currentUser.userId);
+      return true; }
     return false;
   }
 

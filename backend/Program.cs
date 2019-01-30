@@ -17,7 +17,8 @@ namespace BankingLedger
     {
         public enum appType {CONSOLE, WEB}
 
-        static appType app = appType.WEB;
+        //TODO: change app type depending on whether you want to run it in console mode or web mode
+        static appType app = appType.CONSOLE;
 
         /// <summary>
         /// generates service provider to allow for dependency injection into banking ledger application
