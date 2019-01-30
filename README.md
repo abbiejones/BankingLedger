@@ -22,7 +22,7 @@ git clone git@github.com:abbiejones/BankingLedger.git
 ```
 cd BankingLedger/backend/
 ```
-Open `BakingLedger/backend/Program.cs` and confirm that `app` is set to `appType.CONSOLE`
+Open `BankingLedger/backend/Program.cs` and confirm that `app` is set to `appType.CONSOLE`
 Return to your terminal and execute:
 
 ```
