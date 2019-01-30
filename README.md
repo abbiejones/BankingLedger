@@ -21,14 +21,25 @@ git clone git@github.com:abbiejones/BankingLedger.git
 ## Running Console App
 ```
 cd BankingLedger/backend/
+```
+Open `Program.cs` and confirm that `app` is set to `appType.CONSOLE`
+Return to your terminal and execute:
+
+```
 dotnet run
 ```
 ## Running Web App
 
 ```
 cd BankingLedger/backend/
+```
+Open `Program.cs` and confirm that `app` is set to `appType.WEB`
+Return to your terminal and execute:
+
+```
 dotnet run
 ```
+
 In a new terminal:
 ```
 cd BankingLedger/frontend/
