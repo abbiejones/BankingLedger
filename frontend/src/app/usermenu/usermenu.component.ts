@@ -80,6 +80,7 @@ export class UserMenuComponent implements OnInit {
       this.bankingService.withdraw(this.userId, this.accountNumber, this.amount).subscribe((res) => {
         this.balance = res.item2;
         this.accountNumber = res.item1;
+        this.amount = null;
       });
     });
 
@@ -120,6 +121,7 @@ export class UserMenuComponent implements OnInit {
         this.bankingService.deposit(this.userId, this.accountNumber, this.amount).subscribe((res) => {
           this.balance = res.item2;
           this.accountNumber = res.item1;
+          this.amount = null;
         });
     });
     this.checkAccount();
